@@ -1,0 +1,48 @@
+/* sidebar.css — Content Script Injected Styles for Google Flow */
+
+.gflow-indicator {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(10, 10, 16, 0.96);
+  border: 1px solid rgba(66, 133, 244, 0.4);
+  border-radius: 12px;
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Google Sans', 'Inter', sans-serif;
+  font-size: 12px;
+  color: #e8eaed;
+  z-index: 999999;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  transition: all 0.3s ease;
+  max-width: 280px;
+}
+
+.gflow-indicator.hidden {
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+}
+
+.gflow-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4285f4;
+  animation: gflow-pulse 1.5s infinite;
+  flex-shrink: 0;
+}
+
+@keyframes gflow-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.gflow-label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

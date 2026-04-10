@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Google Flow Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="sidepanel.css" />
+</head>
+<body>
+  <div class="app-container">
+
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-logo">
+        <div class="logo-icon">
+          <!-- Google Flow flower icon -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="3" fill="currentColor"/>
+            <path d="M12 2C12 2 14 6 12 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M12 22C12 22 10 18 12 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M2 12C2 12 6 10 9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M22 12C22 12 18 14 15 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M4.93 4.93C4.93 4.93 7.76 8.17 6.34 10.93" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M19.07 19.07C19.07 19.07 16.24 15.83 17.66 13.07" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M4.93 19.07C4.93 19.07 8.17 16.24 10.93 17.66" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M19.07 4.93C19.07 4.93 15.83 7.76 13.07 6.34" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span class="logo-text">Flow<span class="logo-accent">Gen</span></span>
+      </div>
+      <div class="header-badge">Google</div>
+      <div class="header-actions">
+        <button class="icon-btn" id="btn-settings" title="Settings">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Tab Navigation -->
+    <nav class="tab-nav">
+      <button class="tab-btn active" data-tab="generate" id="tab-generate">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
+          <polygon points="5 3 19 12 5 21 5 3" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+        Generate
+      </button>
+      <button class="tab-btn" data-tab="queue" id="tab-queue">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
+          <line x1="8" y1="6" x2="21" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="8" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="8" y1="18" x2="21" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="3" y1="6" x2="3.01" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="3" y1="12" x2="3.01" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="3" y1="18" x2="3.01" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        Queue <span class="badge" id="queue-count">0</span>
+      </button>
+      <button class="tab-btn" data-tab="history" id="tab-history">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+          <polyline points="12 6 12 12 16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        History
+      </button>
+    </nav>
+
+    <!-- Tab Contents -->
+    <main class="tab-content-wrapper">
+
+      <!-- ===== GENERATE TAB ===== -->
+      <div class="tab-content active" id="panel-generate">
+
+        <!-- Status Banner -->
+        <div class="status-banner" id="status-banner">
+          <div class="status-dot idle" id="status-dot"></div>
+          <span class="status-text" id="status-text">Ready to generate</span>
+          <span class="status-badge" id="status-badge">IDLE</span>
+        </div>
+
+        <!-- Injection Options Banner -->
+        <div class="injection-banner">
+          <div class="injection-field">
+            <label class="injection-label">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/></svg>
+              Type
+            </label>
+            <select id="select-media-type" class="injection-select" title="Media Type">
+              <option value="Image">🖼 Image</option>
+              <option value="Video">🎬 Video</option>
+            </select>
+          </div>
+          <div class="injection-field">
+            <label class="injection-label">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 8v4l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              Model
+            </label>
+            <select id="select-model" class="injection-select" title="Model">
+              <option value="Auto">✨ Auto</option>
+              <optgroup label="── Image Models ──">
+                <option value="Nano Banana 2">🍌 Nano Banana 2</option>
+                <option value="Nano Banana Pro">🍌 Nano Banana Pro</option>
+                <option value="Imagen 4">Imagen 4</option>
+              </optgroup>
+              <optgroup label="── Video Models ──">
+                <option value="Veo 3.1 - Lite">Veo 3.1 - Lite</option>
+                <option value="Veo 3.1 - Fast">Veo 3.1 - Fast</option>
+                <option value="Veo 3.1 - Quality">Veo 3.1 - Quality</option>
+              </optgroup>
+            </select>
+          </div>
+          <div class="injection-field">
+            <label class="injection-label">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 10h16M4 14h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              Count
+            </label>
+            <select id="select-quantity" class="injection-select" title="Number of outputs">
+              <option value="x1">x1</option>
+              <option value="x2">x2</option>
+              <option value="x3">x3</option>
+              <option value="x4">x4</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- ── Unified Prompt Section ── -->
+        <section class="section">
+
+          <!-- Header: label + mode dropdown + template -->
+          <div class="section-header">
+            <label class="section-label" for="prompt-input">Prompt</label>
+            <div class="prompt-header-right">
+              <!-- Mode selector dropdown -->
+              <div class="mode-select-wrap">
+                <select id="mode-select" class="mode-select">
+                  <option value="single">⚡ Single</option>
+                  <option value="bulk">📋 Bulk (per line)</option>
+                </select>
+              </div>
+              <button class="link-btn" id="btn-use-template">Template</button>
+              <button class="icon-btn small" id="btn-clear-prompt" title="Clear">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none">
+                  <line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                  <line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Unified Textarea -->
+          <div class="textarea-wrapper" id="prompt-wrapper">
+            <textarea
+              id="prompt-input"
+              class="prompt-textarea"
+              placeholder="Describe what you want to create..."
+              rows="5"
+            ></textarea>
+            <div class="textarea-footer">
+              <span class="char-count" id="char-count">0</span>
+              <!-- Bulk line count (shown only in bulk mode) -->
+              <span class="bulk-line-count hidden" id="bulk-line-count">0 prompts</span>
+            </div>
+          </div>
+
+          <!-- Bulk hint (shown only in bulk mode) -->
+          <div class="bulk-hint hidden" id="bulk-hint">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+              <line x1="12" y1="8" x2="12" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="12" y1="16" x2="12.01" y2="16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            One prompt per line — each line = one image (max 200)
+          </div>
+        </section>
+
+        <!-- ── Options (shared + mode-specific) ── -->
+        <section class="section">
+          <div class="options-grid">
+            <!-- Generate wait delay -->
+            <div class="option-card">
+              <label class="option-label">⏱ Generate wait (s)</label>
+              <div class="number-input-group">
+                <button class="num-btn" id="dec-delay">−</button>
+                <input type="number" id="delay-seconds" class="num-input" value="5" min="3" max="120" />
+                <button class="num-btn" id="inc-delay">+</button>
+              </div>
+            </div>
+
+            <!-- Single mode: repeat  |  Bulk mode: between-prompt delay -->
+            <div class="option-card" id="opt-single">
+              <label class="option-label">🔁 Repeat times</label>
+              <div class="number-input-group">
+                <button class="num-btn" id="dec-repeat">−</button>
+                <input type="number" id="repeat-count" class="num-input" value="1" min="1" max="10" />
+                <button class="num-btn" id="inc-repeat">+</button>
+              </div>
+            </div>
+
+            <div class="option-card hidden" id="opt-bulk">
+              <label class="option-label">👤 Between prompts (s)</label>
+              <div class="number-input-group">
+                <button class="num-btn" id="dec-between">−</button>
+                <input type="number" id="between-delay" class="num-input" value="3" min="1" max="60" />
+                <button class="num-btn" id="inc-between">+</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="option-row">
+            <label class="toggle-label">
+              <span class="toggle-text">
+                <span class="toggle-title">Loop queue</span>
+                <span class="toggle-desc">Repeat all prompts when finished</span>
+              </span>
+              <div class="toggle-switch">
+                <input type="checkbox" id="toggle-loop" />
+                <span class="toggle-slider"></span>
+              </div>
+            </label>
+          </div>
+
+          <div class="option-row">
+            <label class="toggle-label">
+              <span class="toggle-text">
+                <span class="toggle-title">Auto-scroll results</span>
+                <span class="toggle-desc">Scroll to new generated content</span>
+              </span>
+              <div class="toggle-switch">
+                <input type="checkbox" id="toggle-scroll" checked />
+                <span class="toggle-slider"></span>
+              </div>
+            </label>
+          </div>
+
+          <div class="option-row">
+            <label class="toggle-label">
+              <span class="toggle-text">
+                <span class="toggle-title">Auto-download</span>
+                <span class="toggle-desc">Download generated images to your PC</span>
+              </span>
+              <div class="toggle-switch">
+                <input type="checkbox" id="toggle-download" checked />
+                <span class="toggle-slider"></span>
+              </div>
+            </label>
+          </div>
+        </section>
+
+        <!-- ── Action Buttons ── -->
+        <section class="actions-section">
+          <button class="btn-primary" id="btn-add-queue">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+              <line x1="12" y1="5" x2="12" y2="19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
+            Add to Queue
+          </button>
+          <!-- Label changes based on mode -->
+          <button class="btn-go" id="btn-go">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+              <polygon points="5 3 19 12 5 21 5 3" fill="currentColor"/>
+            </svg>
+            <span id="btn-go-label">Generate Now</span>
+          </button>
+        </section>
+
+      </div>
+
+      <!-- ===== QUEUE TAB ===== -->
+      <div class="tab-content" id="panel-queue">
+
+        <div class="queue-controls">
+          <div class="queue-stats">
+            <div class="stat-pill">
+              <span class="stat-num" id="stat-total">0</span>
+              <span class="stat-lbl">Total</span>
+            </div>
+            <div class="stat-pill done">
+              <span class="stat-num" id="stat-done">0</span>
+              <span class="stat-lbl">Done</span>
+            </div>
+            <div class="stat-pill pending">
+              <span class="stat-num" id="stat-pending">0</span>
+              <span class="stat-lbl">Pending</span>
+            </div>
+          </div>
+          <div class="queue-btns">
+            <button class="btn-icon-only" id="btn-pause" title="Pause/Resume">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" id="pause-icon">
+                <rect x="6" y="4" width="4" height="16" rx="1" fill="currentColor"/>
+                <rect x="14" y="4" width="4" height="16" rx="1" fill="currentColor"/>
+              </svg>
+            </button>
+            <button class="btn-icon-only danger" id="btn-clear-queue" title="Clear Queue">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <polyline points="3 6 5 6 21 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="progress-container" id="progress-container">
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+          </div>
+          <span class="progress-text" id="progress-text">0 / 0</span>
+        </div>
+
+        <div class="queue-list" id="queue-list">
+          <div class="empty-state" id="queue-empty">
+            <div class="empty-icon">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                <rect x="14" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                <rect x="3" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                <rect x="14" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <p class="empty-title">Queue is empty</p>
+            <p class="empty-desc">Add prompts from the Generate tab</p>
+          </div>
+        </div>
+
+        <div class="queue-action">
+          <button class="btn-primary full-width" id="btn-start-queue">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+              <polygon points="5 3 19 12 5 21 5 3" fill="currentColor"/>
+            </svg>
+            Start Queue
+          </button>
+        </div>
+
+      </div>
+
+      <!-- ===== HISTORY TAB ===== -->
+      <div class="tab-content" id="panel-history">
+
+        <div class="history-controls">
+          <div class="search-box">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
+              <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
+              <line x1="21" y1="21" x2="16.65" y2="16.65" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <input type="text" id="history-search" class="search-input" placeholder="Search prompts..." />
+          </div>
+          <button class="btn-icon-only danger" id="btn-clear-history" title="Clear History">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+              <polyline points="3 6 5 6 21 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="history-summary">
+          <span id="history-count">0 prompts generated</span>
+        </div>
+
+        <div class="history-list" id="history-list">
+          <div class="empty-state" id="history-empty">
+            <div class="empty-icon">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+                <polyline points="12 6 12 12 16 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <p class="empty-title">No history yet</p>
+            <p class="empty-desc">Generated prompts will appear here</p>
+          </div>
+        </div>
+
+      </div>
+
+    </main>
+
+    <!-- Settings Modal -->
+    <div class="modal-overlay" id="settings-modal">
+      <div class="modal">
+        <div class="modal-header">
+          <h3 class="modal-title">Settings</h3>
+          <button class="icon-btn" id="btn-close-settings">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="setting-group">
+            <label class="setting-label">Generation Delay (seconds)</label>
+            <input type="number" id="setting-delay" class="setting-input" value="5" min="3" max="120" />
+            <span class="setting-hint">Flow usually takes 15–40s per generation</span>
+          </div>
+          <div class="setting-group">
+            <label class="setting-label">Max Queue Size</label>
+            <input type="number" id="setting-max-queue" class="setting-input" value="50" min="1" max="200" />
+          </div>
+          <div class="setting-group">
+            <label class="setting-label">Flow Project URL</label>
+            <input type="text" id="setting-flow-url" class="setting-input" placeholder="https://labs.google/fx/th/tools/flow/project/..." />
+            <span class="setting-hint">Leave empty to use currently open Flow tab</span>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-secondary" id="btn-cancel-settings">Cancel</button>
+          <button class="btn-primary" id="btn-save-settings">Save</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+  </div>
+
+  <script src="sidepanel.js"></script>
+</body>
+</html>
